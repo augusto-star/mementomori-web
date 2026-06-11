@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memento Mori Gin — Gin artesanal argentino</title>
+  <meta name="description" content="Gin artesanal argentino nacido de la filosofía estoica. 10 botánicos · 560ml · 42% ABV. Recordá que sos mortal. Empezá a vivir.">
+  <meta property="og:title" content="Memento Mori Gin">
+  <meta property="og:description" content="No es un gin. Es un recordatorio. Gin artesanal argentino · 10 botánicos · 42% ABV.">
+  <meta name="theme-color" content="#0A0806">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0806'/%3E%3Ctext x='32' y='46' font-family='Georgia, serif' font-size='42' fill='%23C9A84C' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <script>
+    // Pre-paint: si ya verificó edad en una visita anterior, el gate no aparece ni un frame
+    try {
+      if (localStorage.getItem('mm_age_ok') === '1') {
+        document.documentElement.classList.add('age-ok');
+      }
+    } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="img/hero-vinilos.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --negro: #0A0806;
+      --crema: #F5F0E8;
+      --blanco: #FFFFFF;
+      --oro: #C9A84C;
+      --oro-claro: #E8C97A;
+      --violeta: #4A3060;
+      --violeta-prof: #241533;
+      --display: 'Cinzel', Georgia, serif;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--negro);
+      color: var(--crema);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; }
+
+    ::selection {
+      background-color: var(--oro);
+      color: var(--negro);
+    }
+
+    body::-webkit-scrollbar { width: 10px; }
+    body::-webkit-scrollbar-track { background: var(--negro); }
+    body::-webkit-scrollbar-thumb {
+      background: #2A2520;
+      border-radius: 5px;
+    }
+    body::-webkit-scrollbar-thumb:hover { background: var(--oro); }
+
+    body.no-scroll { overflow: hidden; }
+
+    /* ── UTILIDADES ── */
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 17px 44px;
+      border: 1px solid var(--oro);
+      color: inherit;
+      background-color: transparent;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 160ms var(--ease-out-strong);
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover {
+        background-color: var(--oro);
+        color: var(--negro);
+      }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background-color: transparent;
+      transition: background-color 300ms ease, border-color 300ms ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav.solid {
+      background-color: rgba(10, 8, 6, 0.92);
+      border-bottom-color: rgba(245, 240, 232, 0.07);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo img {
+      height: 34px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a:not(.nav-cta) {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--crema);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:not(.nav-cta):hover { opacity: 1; }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--oro);
+      text-decoration: none;
+      border: 1px solid var(--oro);
+      padding: 11px 26px;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 160ms var(--ease-out-strong);
+    }
+
+    .nav-cta:active { transform: scale(0.97); }
+
+    @media (hover: hover) and (pointer: fine) {
+      .nav-cta:hover {
+        background-color: var(--oro);
+        color: var(--negro);
+      }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 100px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: -14% 0;
+      z-index: -1;
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    /* Ken Burns: la foto respira, un zoom de 16s ida y vuelta */
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/hero-vinilos.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      animation: kenburns 16s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes kenburns {
+      from { transform: scale(1); }
+      to   { transform: scale(1.09); }
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(10,8,6,0.82) 0%, rgba(10,8,6,0.72) 45%, rgba(10,8,6,0.92) 100%);
+    }
+
+    .hero-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--crema);
+      opacity: 0.55;
+      margin-bottom: 40px;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(52px, 11vw, 150px);
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: 0.04em;
+      color: var(--crema);
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--oro);
+    }
+
+    .hero-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(17px, 2.2vw, 24px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--crema);
+      opacity: 0.85;
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    .hero .btn { color: var(--crema); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crema);
+      opacity: 0.4;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(180deg, var(--crema), transparent);
+    }
+
+    /* ── CITA ── */
+    .cita {
+      background-color: var(--negro);
+      padding: 130px 24px;
+      text-align: center;
+    }
+
+    .cita-inner { max-width: 760px; margin: 0 auto; }
+
+    .cita-inner::before {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 1px;
+      background-color: var(--oro);
+      margin: 0 auto 48px;
+    }
+
+    .cita blockquote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(24px, 3.4vw, 38px);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--crema);
+      margin-bottom: 32px;
+    }
+
+    .cita cite {
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--oro);
+      opacity: 0.85;
+    }
+
+    /* ── PRECEPTO ── */
+    .precepto {
+      background-color: var(--crema);
+      color: var(--negro);
+      padding: 150px 48px;
+    }
+
+    .precepto-inner { max-width: 720px; margin: 0 auto; }
+
+    .precepto h2 {
+      font-family: var(--display);
+      font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 400;
+      line-height: 1.18;
+      margin-bottom: 48px;
+    }
+
+    .precepto p {
+      font-family: var(--serif);
+      font-size: clamp(19px, 2.2vw, 24px);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .precepto p:last-of-type { margin-bottom: 0; }
+
+    .precepto .violeta-rule {
+      width: 48px;
+      height: 3px;
+      background-color: var(--violeta);
+      margin-bottom: 40px;
+    }
+
+    /* ── HISTORIA ── */
+    .historia {
+      background-color: var(--blanco);
+      color: var(--negro);
+      padding: 150px 48px;
+    }
+
+    .historia-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 90px;
+      align-items: center;
+    }
+
+    .historia-foto {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+
+    .historia-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gin-foto { aspect-ratio: 3/2; }
+
+    .gin-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .historia h2 {
+      font-family: var(--display);
+      font-size: clamp(28px, 3.6vw, 44px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 40px;
+    }
+
+    .historia p {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.7;
+      margin-bottom: 26px;
+    }
+
+    .historia .firma {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-top: 14px;
+    }
+
+    /* ── VIRTUDES ── */
+    .virtudes {
+      background-color: var(--negro);
+      padding: 150px 48px;
+    }
+
+    .virtudes-inner { max-width: 1140px; margin: 0 auto; }
+
+    .virtudes h2 {
+      font-family: var(--display);
+      font-size: clamp(28px, 3.6vw, 44px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--crema);
+      margin-bottom: 18px;
+    }
+
+    .virtudes-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      opacity: 0.55;
+      margin-bottom: 80px;
+    }
+
+    .virtudes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background-color: rgba(245, 240, 232, 0.08);
+      border: 1px solid rgba(245, 240, 232, 0.08);
+    }
+
+    .virtud {
+      background-color: var(--negro);
+      padding: 48px 32px 56px;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+
+    .virtud::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--violeta);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 400ms var(--ease-out-strong);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .virtud:hover { background-color: #120E0A; }
+      .virtud:hover::before { transform: scaleX(1); }
+    }
+
+    .virtud-num {
+      font-family: var(--display);
+      font-size: 30px;
+      color: var(--oro);
+      margin-bottom: 24px;
+    }
+
+    .virtud h3 {
+      font-family: var(--display);
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--crema);
+      margin-bottom: 20px;
+    }
+
+    .virtud p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--crema);
+      opacity: 0.7;
+    }
+
+    /* ── EL GIN ── */
+    .gin {
+      background-color: var(--blanco);
+      color: var(--negro);
+      padding: 150px 48px;
+    }
+
+    .gin-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 90px;
+      align-items: center;
+    }
+
+    .gin-foto { overflow: hidden; }
+
+    .gin h2 {
+      font-family: var(--display);
+      font-size: clamp(28px, 3.6vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 44px;
+    }
+
+    .gin-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+
+    .spec-value {
+      font-family: var(--display);
+      font-size: 42px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .spec-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.45;
+    }
+
+    .gin-botanicos {
+      border-top: 1px solid rgba(10, 8, 6, 0.1);
+      padding-top: 36px;
+      margin-bottom: 36px;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 2.3;
+      opacity: 0.5;
+    }
+
+    .gin-cata {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1.7;
+      opacity: 0.75;
+    }
+
+    /* ── EL NOMBRE ── */
+    .nombre {
+      background-color: var(--violeta-prof);
+      padding: 150px 24px;
+      text-align: center;
+    }
+
+    .nombre-inner { max-width: 680px; margin: 0 auto; }
+
+    .nombre h2 {
+      font-family: var(--display);
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--crema);
+      margin-bottom: 36px;
+    }
+
+    .nombre h2 em {
+      font-style: italic;
+      color: var(--oro-claro);
+    }
+
+    .nombre p {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.2vw, 23px);
+      line-height: 1.7;
+      color: var(--crema);
+      opacity: 0.8;
+    }
+
+    .nombre p + p { margin-top: 22px; }
+
+    /* ── PRESENTACIONES ── */
+    .presentaciones {
+      background-color: var(--crema);
+      color: var(--negro);
+      padding: 150px 48px;
+    }
+
+    .presentaciones-inner { max-width: 1140px; margin: 0 auto; }
+
+    .presentaciones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      margin-top: 64px;
+    }
+
+    .card { display: flex; flex-direction: column; gap: 20px; }
+
+    .card-img {
+      background-color: #EDE8DF;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 600ms var(--ease-out-strong);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover .card-img img { transform: scale(1.04); }
+    }
+
+    .card-info { display: flex; flex-direction: column; gap: 6px; }
+
+    .card-nombre { font-family: var(--display); font-size: 18px; }
+
+    .card-detalle {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      opacity: 0.55;
+    }
+
+    .card-precio {
+      font-family: var(--display);
+      font-size: 22px;
+      margin-top: 8px;
+    }
+
+    .card .btn {
+      margin-top: 14px;
+      padding: 13px 28px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background-color: var(--negro);
+      padding: 170px 24px;
+      text-align: center;
+    }
+
+    .cta-final-inner { max-width: 720px; margin: 0 auto; }
+
+    .cta-final h2 {
+      font-family: var(--display);
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--crema);
+      margin-bottom: 28px;
+    }
+
+    .cta-final .lema {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: var(--crema);
+      opacity: 0.7;
+      margin-bottom: 56px;
+    }
+
+    .cta-final-botones {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta-final .btn { color: var(--crema); }
+
+    .btn-ghost {
+      border-color: rgba(245, 240, 232, 0.3);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .btn-ghost:hover {
+        background-color: var(--crema);
+        border-color: var(--crema);
+        color: var(--negro);
+      }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: var(--negro);
+      border-top: 1px solid rgba(245, 240, 232, 0.08);
+      padding: 72px 48px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand-col .marca {
+      font-family: var(--display);
+      font-size: 17px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--crema);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand-col .claim {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--crema);
+      opacity: 0.45;
+    }
+
+    .footer-col h4 {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--oro);
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    .footer-col p, .footer-col a {
+      font-family: var(--sans);
+      font-size: 12px;
+      line-height: 2;
+      color: var(--crema);
+      opacity: 0.45;
+      text-decoration: none;
+      display: block;
+    }
+
+    .footer-col a:hover { opacity: 0.8; }
+
+    .footer-legal {
+      max-width: 1140px;
+      margin: 56px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(245, 240, 232, 0.07);
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--crema);
+      opacity: 0.35;
+    }
+
+    /* ── ANIMACIONES ── */
+    @keyframes heroIn {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+    }
+
+    @keyframes lineUp {
+      from { transform: translateY(112%); }
+      to   { transform: translateY(0); }
+    }
+
+    .hero-label  { animation: heroIn 800ms var(--ease-out-strong) 150ms backwards; }
+    .hero-sub    { animation: heroIn 800ms var(--ease-out-strong) 750ms backwards; }
+    .hero .btn   { animation: heroIn 800ms var(--ease-out-strong) 950ms backwards; }
+    .hero-scroll { animation: heroIn 800ms var(--ease-out-strong) 1250ms backwards; }
+
+    /* Máscaras de línea: el texto emerge desde atrás de un borde invisible */
+    .mask {
+      display: block;
+      overflow: hidden;
+    }
+
+    .mask-inner {
+      display: block;
+      transform: translateY(112%);
+    }
+
+    .hero-title .mask-inner {
+      animation: lineUp 1000ms var(--ease-out-strong) both;
+    }
+
+    .hero-title .mask:nth-child(1) .mask-inner { animation-delay: 300ms; }
+    .hero-title .mask:nth-child(2) .mask-inner { animation-delay: 460ms; }
+
+    .reveal .mask-inner {
+      transition: transform 950ms var(--ease-out-strong) 120ms;
+    }
+
+    .reveal .mask:nth-of-type(2) .mask-inner { transition-delay: 280ms; }
+
+    .reveal.is-visible .mask-inner { transform: translateY(0); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 700ms var(--ease-out-strong), transform 700ms var(--ease-out-strong);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d2 { transition-delay: 90ms; }
+    .reveal-d3 { transition-delay: 180ms; }
+    .reveal-d4 { transition-delay: 270ms; }
+
+    .reveal-clip {
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1100ms var(--ease-out-strong);
+    }
+
+    .reveal-clip.is-visible { clip-path: inset(0 0 0 0); }
+
+    /* Zoom que se asienta: la foto entra en 114% y aterriza en 100% */
+    .reveal-clip img {
+      transform: scale(1.14);
+      transition: transform 1400ms var(--ease-out-strong);
+    }
+
+    .reveal-clip.is-visible img { transform: scale(1); }
+
+    /* Parallax: el wrapper se desplaza más lento que el scroll */
+    .plx {
+      height: 114%;
+      margin-top: -7%;
+      will-change: transform;
+    }
+
+    /* Cinta en movimiento */
+    .marquee {
+      background-color: var(--negro);
+      border-top: 1px solid rgba(245, 240, 232, 0.07);
+      border-bottom: 1px solid rgba(245, 240, 232, 0.07);
+      padding: 20px 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: marquee 36s linear infinite;
+      will-change: transform;
+    }
+
+    .marquee-track span {
+      font-family: var(--display);
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--crema);
+      opacity: 0.45;
+      margin-right: 72px;
+    }
+
+    .marquee-track span.mq-oro {
+      color: var(--oro);
+      opacity: 0.8;
+    }
+
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    .hero-content { will-change: transform, opacity; }
+
+    /* ── AGE GATE ── */
+    #age-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background:
+        radial-gradient(ellipse at center, rgba(26, 20, 12, 0.6) 0%, rgba(10, 8, 6, 1) 75%),
+        var(--negro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      transition: opacity 600ms var(--ease-out-strong), visibility 600ms;
+    }
+
+    #age-gate.gate-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    html.age-ok #age-gate { display: none; }
+
+    .gate-inner { max-width: 480px; }
+
+    .gate-monograma {
+      font-family: var(--display);
+      font-size: 54px;
+      color: var(--oro);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .gate-marca {
+      font-family: var(--display);
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--crema);
+      opacity: 0.6;
+      margin-bottom: 48px;
+    }
+
+    .gate-titulo {
+      font-family: var(--display);
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--crema);
+      margin-bottom: 16px;
+    }
+
+    .gate-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--crema);
+      opacity: 0.6;
+      margin-bottom: 44px;
+    }
+
+    .gate-botones {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .gate-botones .btn { color: var(--crema); cursor: pointer; }
+
+    .gate-legal {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--crema);
+      opacity: 0.3;
+    }
+
+    /* ── COOKIES ── */
+    #cookie-banner {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translate(-50%, 130%);
+      z-index: 900;
+      width: min(680px, calc(100vw - 32px));
+      background-color: #14100B;
+      border: 1px solid rgba(201, 168, 76, 0.35);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      transition: transform 600ms var(--ease-out-strong);
+    }
+
+    #cookie-banner.show { transform: translate(-50%, 0); }
+
+    .cookie-texto {
+      flex: 1;
+      font-family: var(--sans);
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--crema);
+      opacity: 0.75;
+    }
+
+    .cookie-texto strong {
+      font-weight: 500;
+      color: var(--oro);
+    }
+
+    .cookie-botones {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .cookie-botones .btn {
+      padding: 11px 22px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--crema);
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      #cookie-banner { flex-direction: column; align-items: stretch; text-align: center; }
+      .cookie-botones { justify-content: center; }
+    }
+
+    /* ── ESCENA CLAVADA: LOS 10 BOTÁNICOS ── */
+    .botanicos-pin {
+      position: relative;
+      height: 520vh;
+      background-color: var(--negro);
+    }
+
+    .botanicos-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 24px;
+      overflow: hidden;
+    }
+
+    .bot-idx {
+      font-family: var(--display);
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      color: var(--oro);
+      margin-bottom: 28px;
+    }
+
+    .bot-name {
+      font-family: var(--display);
+      font-size: clamp(44px, 9vw, 110px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--crema);
+      margin-bottom: 24px;
+    }
+
+    .bot-nota {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(16px, 2vw, 21px);
+      color: var(--crema);
+      opacity: 0.6;
+      max-width: 480px;
+    }
+
+    .bot-swap {
+      transition: opacity 300ms ease, transform 300ms var(--ease-out-strong);
+    }
+
+    .bot-hide {
+      opacity: 0 !important;
+      transform: translateY(16px);
+    }
+
+    .bot-progress {
+      position: absolute;
+      bottom: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      height: 1px;
+      background-color: rgba(245, 240, 232, 0.15);
+    }
+
+    #bot-bar {
+      display: block;
+      height: 100%;
+      background-color: var(--oro);
+      transform: scaleX(0);
+      transform-origin: left;
+      will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-label, .hero-sub, .hero .btn, .hero-scroll { animation: none; }
+      .hero-title .mask-inner { animation: none; transform: none; }
+      .mask-inner { transform: none; transition: none; }
+      .reveal { transform: none; transition: opacity 300ms ease; }
+      .reveal-clip { clip-path: none; transition: none; }
+      .reveal-clip img { transform: none; transition: none; }
+      .card-img img { transition: none; }
+      .marquee-track { animation: none; }
+      .plx { height: 100%; margin-top: 0; }
+      .hero-bg-img { animation: none; }
+      .bot-swap { transition: opacity 200ms ease; }
+      .bot-hide { transform: none; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+
+      .historia-inner, .gin-inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+
+      .virtudes-grid { grid-template-columns: 1fr 1fr; }
+
+      .presentaciones-grid { grid-template-columns: 1fr; gap: 48px; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+
+      .footer-legal { flex-direction: column; gap: 8px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+
+      .precepto, .historia, .virtudes, .gin, .presentaciones { padding: 100px 24px; }
+
+      .cita { padding: 100px 24px; }
+
+      .nombre, .cta-final { padding: 110px 24px; }
+
+      footer { padding: 56px 24px 40px; }
+
+      .virtudes-grid { grid-template-columns: 1fr; }
+
+      .virtud { padding: 36px 28px 42px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AGE GATE -->
+  <div id="age-gate" role="dialog" aria-modal="true" aria-label="Verificación de edad">
+    <div class="gate-inner">
+      <p class="gate-monograma">M</p>
+      <p class="gate-marca">Memento Mori Gin</p>
+      <p class="gate-titulo">¿Sos mayor de 18 años?</p>
+      <p class="gate-sub">El tiempo es finito. La paciencia, una virtud.</p>
+      <div class="gate-botones">
+        <button type="button" class="btn" id="gate-si">Soy mayor de 18</button>
+        <button type="button" class="btn btn-ghost" id="gate-no">Todavía no</button>
+      </div>
+      <p class="gate-legal">Beber con moderación. Prohibida la venta a menores de 18 años.</p>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo"><img src="img/logo.png" alt="Memento Mori Gin"></a>
+    <div class="nav-links">
+      <a href="#precepto">El Precepto</a>
+      <a href="#historia">Historia</a>
+      <a href="#virtudes">Virtudes</a>
+      <a href="#gin">El Gin</a>
+      <a href="https://ginmementomori.mitiendanube.com" target="_blank" class="nav-cta">Comprar</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg" data-parallax="0.16">
+      <div class="hero-bg-img"></div>
+    </div>
+    <div class="hero-content" id="hero-content">
+      <p class="hero-label">Gin artesanal argentino · Est. 2023</p>
+      <h1 class="hero-title">
+        <span class="mask"><span class="mask-inner">Memento</span></span>
+        <span class="mask"><span class="mask-inner"><em>Mori</em></span></span>
+      </h1>
+      <p class="hero-sub">Recordá que sos mortal. Empezá a vivir.</p>
+      <a href="https://ginmementomori.mitiendanube.com" target="_blank" class="btn">Pedí tu Memento</a>
+    </div>
+    <div class="hero-scroll">Descubrir</div>
+  </header>
+
+  <!-- CINTA -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Memento Mori</span><span class="mq-oro">·</span><span>Recordá que sos mortal</span><span class="mq-oro">·</span><span>Est. 2023</span><span class="mq-oro">·</span><span>Gin artesanal argentino</span><span class="mq-oro">·</span><span>Memento Mori</span><span class="mq-oro">·</span><span>Recordá que sos mortal</span><span class="mq-oro">·</span><span>Est. 2023</span><span class="mq-oro">·</span><span>Gin artesanal argentino</span><span class="mq-oro">·</span>
+    </div>
+  </div>
+
+  <!-- CITA -->
+  <section class="cita">
+    <div class="cita-inner reveal">
+      <blockquote>"La muerte te muestra qué es esencial y qué es superficial."</blockquote>
+      <cite>Marco Aurelio</cite>
+    </div>
+  </section>
+
+  <!-- EL PRECEPTO -->
+  <section class="precepto" id="precepto">
+    <div class="precepto-inner reveal">
+      <p class="eyebrow">El Precepto</p>
+      <h2><span class="mask"><span class="mask-inner">Una filosofía de 2000 años.</span></span></h2>
+      <div class="violeta-rule"></div>
+      <p>En la antigua Roma, cuando un general regresaba victorioso de la guerra, un sabio caminaba a su lado susurrando estas palabras. No como insulto. Como recordatorio.</p>
+      <p>Toda esa gloria, toda esa victoria, todo ese poder — en algún momento se va a acabar. Usá ese pensamiento para vivir mejor hoy.</p>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section class="historia" id="historia">
+    <div class="historia-inner">
+      <div class="historia-foto reveal-clip">
+        <div class="plx" data-parallax="0.07">
+          <img src="img/historia-brindis.jpg" alt="Augusto e Ignacio brindando con Memento Mori" loading="lazy">
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Nuestra Historia</p>
+        <h2><span class="mask"><span class="mask-inner">Una noche. Una pregunta.</span></span><span class="mask"><span class="mask-inner">Una decisión.</span></span></h2>
+        <p>Dos amigos. Una noche. Una pregunta.</p>
+        <p><em>¿Por qué no?</em></p>
+        <p>Un año de pruebas y errores después, la respuesta está en esta botella. Memento Mori nació sin un plan perfecto. Con diez botánicos, mucha convicción y la certeza de que el momento de empezar siempre fue este.</p>
+        <p class="firma">Augusto & Ignacio — Est. 2023</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAS 4 VIRTUDES -->
+  <section class="virtudes" id="virtudes">
+    <div class="virtudes-inner">
+      <div class="reveal">
+        <p class="eyebrow">Las Virtudes</p>
+        <h2><span class="mask"><span class="mask-inner">Las cuatro monedas de oro.</span></span></h2>
+        <p class="virtudes-sub">Grabadas en cada botella. Las virtudes cardinales del estoicismo.</p>
+      </div>
+      <div class="virtudes-grid">
+        <div class="virtud reveal">
+          <p class="virtud-num">I</p>
+          <h3>Sabiduría</h3>
+          <p>"El conocimiento sin acción es solo peso."</p>
+        </div>
+        <div class="virtud reveal reveal-d2">
+          <p class="virtud-num">II</p>
+          <h3>Justicia</h3>
+          <p>"Tratá a los demás como querés ser tratado — hoy, no mañana."</p>
+        </div>
+        <div class="virtud reveal reveal-d3">
+          <p class="virtud-num">III</p>
+          <h3>Coraje</h3>
+          <p>"El miedo no es a morir. Es a no haber vivido."</p>
+        </div>
+        <div class="virtud reveal reveal-d4">
+          <p class="virtud-num">IV</p>
+          <h3>Templanza</h3>
+          <p>"Dominio propio no es privación. Es elección consciente."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EL GIN -->
+  <section class="gin" id="gin">
+    <div class="gin-inner">
+      <div class="gin-foto reveal-clip">
+        <div class="plx" data-parallax="0.06">
+          <img src="img/gin-botanicos.jpg" alt="Botella de Memento Mori Gin entre sus 10 botánicos" loading="lazy">
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">El Gin</p>
+        <h2><span class="mask"><span class="mask-inner">Diez botánicos. 24 horas de</span></span><span class="mask"><span class="mask-inner">maceración. Un solo propósito.</span></span></h2>
+        <div class="gin-specs">
+          <div>
+            <p class="spec-value" data-count="10">10</p>
+            <p class="spec-label">Botánicos</p>
+          </div>
+          <div>
+            <p class="spec-value" data-count="560">560</p>
+            <p class="spec-label">ml</p>
+          </div>
+          <div>
+            <p class="spec-value" data-count="42" data-suffix="%">42%</p>
+            <p class="spec-label">ABV</p>
+          </div>
+        </div>
+        <p class="gin-botanicos">Enebro · Coriandro · Limón · Naranja · Canela · Pimienta de Jamaica · Romero · Nuez moscada · Raíz de angélica · Cardamomo</p>
+        <p class="gin-cata">Perfumado en nariz, suave en boca, con un dejo de picor en garganta. Se recomienda sin garnish — dejá que el gin hable por sí mismo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOS 10 BOTÁNICOS (escena clavada) -->
+  <section class="botanicos-pin" id="botanicos-pin" aria-label="Los diez botánicos">
+    <div class="botanicos-sticky">
+      <p class="eyebrow">El Blend</p>
+      <p class="bot-idx bot-swap" id="bot-idx">01 — 10</p>
+      <h3 class="bot-name bot-swap" id="bot-name">Enebro</h3>
+      <p class="bot-nota bot-swap" id="bot-nota">La espina dorsal del gin.</p>
+      <div class="bot-progress"><span id="bot-bar"></span></div>
+    </div>
+  </section>
+
+  <!-- EL NOMBRE -->
+  <section class="nombre">
+    <div class="nombre-inner reveal">
+      <p class="eyebrow">El Nombre</p>
+      <h2><span class="mask"><span class="mask-inner">Tomemos un <em>Memento.</em></span></span></h2>
+      <p>Memento en latín: <em>recordá</em>. Memento en castellano: <em>recuerdo</em>.</p>
+      <p>Tomemos un trago. Tomemos un recuerdo. Cada reunión, cada momento compartido, sellado en una copa. Las dos cosas a la vez — eso es lo que esta botella viene a hacer.</p>
+    </div>
+  </section>
+
+  <!-- PRESENTACIONES -->
+  <section class="presentaciones" id="presentaciones">
+    <div class="presentaciones-inner">
+      <p class="eyebrow reveal">Presentaciones</p>
+      <div class="presentaciones-grid">
+        <div class="card reveal">
+          <div class="card-img"><img src="img/botella.png" alt="Botella Memento Mori Gin 560ml" loading="lazy"></div>
+          <div class="card-info">
+            <p class="card-nombre">Botella</p>
+            <p class="card-detalle">10 botánicos · 560ml · 42% ABV</p>
+            <p class="card-precio">$25.000</p>
+            <a href="https://ginmementomori.mitiendanube.com" target="_blank" class="btn">Comprar</a>
+          </div>
+        </div>
+        <div class="card reveal reveal-d2">
+          <div class="card-img"><img src="img/combo.png" alt="Combo botella y copa Memento Mori" loading="lazy"></div>
+          <div class="card-info">
+            <p class="card-nombre">Combo</p>
+            <p class="card-detalle">Botella + Copa</p>
+            <p class="card-precio">$31.000</p>
+            <a href="https://ginmementomori.mitiendanube.com" target="_blank" class="btn">Comprar</a>
+          </div>
+        </div>
+        <div class="card reveal reveal-d3">
+          <div class="card-img"><img src="img/copa.png" alt="Copa Memento Mori 600ml" loading="lazy"></div>
+          <div class="card-info">
+            <p class="card-nombre">Copa</p>
+            <p class="card-detalle">600ml</p>
+            <p class="card-precio">$10.000</p>
+            <a href="https://ginmementomori.mitiendanube.com" target="_blank" class="btn">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="cta-final-inner reveal">
+      <p class="eyebrow">Disponible en todo el país</p>
+      <h2><span class="mask"><span class="mask-inner">Tomá un Memento.</span></span><span class="mask"><span class="mask-inner">Recordá que estás vivo.</span></span></h2>
+      <p class="lema">El mañana no está garantizado. Pero este momento, sí.</p>
+      <div class="cta-final-botones">
+        <a href="https://ginmementomori.mitiendanube.com" target="_blank" class="btn">Comprar</a>
+        <a href="https://www.instagram.com/mementomori.gin/" target="_blank" class="btn btn-ghost">Seguinos en Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand-col">
+        <p class="marca">Memento Mori Gin</p>
+        <p class="claim">No es un gin. Es un recordatorio.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Origen</h4>
+        <p>Destilería Los Terpenos</p>
+        <p>Pergamino, Buenos Aires</p>
+        <p>Producto Argentino</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="https://www.instagram.com/mementomori.gin/" target="_blank">Instagram — @mementomori.gin</a>
+        <a href="https://wa.me/5491161541587" target="_blank">WhatsApp — +54 11 6154 1587</a>
+        <a href="https://ginmementomori.mitiendanube.com" target="_blank">Tienda online</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>Beber con moderación. Prohibida la venta a menores de 18 años.</span>
+      <span>RNE 02-041.688 · © 2023 Memento Mori</span>
+    </div>
+  </footer>
+
+  <!-- COOKIES -->
+  <div id="cookie-banner" role="dialog" aria-label="Preferencias de cookies">
+    <p class="cookie-texto"><strong>Cookies.</strong> Usamos cookies para medir cómo se usa el sitio (estadísticas y publicidad). Nada más. Podés cambiar de opinión cuando quieras.</p>
+    <div class="cookie-botones">
+      <button type="button" class="btn" id="cookies-si">Aceptar</button>
+      <button type="button" class="btn btn-ghost" id="cookies-min">Solo esenciales</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+      function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+      // ── COOKIES ──
+      var cookieBanner = document.getElementById('cookie-banner');
+
+      function loadAnalytics() {
+        // Acá van GA4 y el Pixel de Meta cuando tengamos los IDs.
+        // Solo se ejecuta si el visitante aceptó cookies completas.
+        // GA4:   gtag config G-XXXXXXX
+        // Pixel: fbq init XXXXXXXXXXXX
+      }
+
+      function maybeShowCookies() {
+        var consent = read('mm_cookies');
+        if (consent === 'all') { loadAnalytics(); return; }
+        if (consent === 'essential') return;
+        setTimeout(function () { cookieBanner.classList.add('show'); }, 900);
+      }
+
+      document.getElementById('cookies-si').addEventListener('click', function () {
+        store('mm_cookies', 'all');
+        cookieBanner.classList.remove('show');
+        loadAnalytics();
+      });
+
+      document.getElementById('cookies-min').addEventListener('click', function () {
+        store('mm_cookies', 'essential');
+        cookieBanner.classList.remove('show');
+      });
+
+      // ── AGE GATE ──
+      var gate = document.getElementById('age-gate');
+
+      if (read('mm_age_ok') === '1') {
+        if (gate) gate.parentNode.removeChild(gate);
+        maybeShowCookies();
+      } else {
+        document.body.classList.add('no-scroll');
+
+        document.getElementById('gate-si').addEventListener('click', function () {
+          store('mm_age_ok', '1');
+          gate.classList.add('gate-out');
+          document.body.classList.remove('no-scroll');
+          setTimeout(function () {
+            if (gate.parentNode) gate.parentNode.removeChild(gate);
+          }, 700);
+          maybeShowCookies();
+        });
+
+        document.getElementById('gate-no').addEventListener('click', function () {
+          gate.querySelector('.gate-inner').innerHTML =
+            '<p class="gate-monograma">M</p>' +
+            '<p class="gate-marca">Memento Mori Gin</p>' +
+            '<p class="gate-titulo">El tiempo es lo único que te falta.</p>' +
+            '<p class="gate-sub">Volvé cuando seas mayor de 18. Acá vamos a estar.</p>' +
+            '<p class="gate-legal">Beber con moderación. Prohibida la venta a menores de 18 años.</p>';
+        });
+      }
+
+      // ── Contadores: los números cuentan hasta su valor al entrar en pantalla ──
+      function animateCount(el) {
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var t0 = performance.now();
+        var dur = 1300;
+        function tick(t) {
+          var p = Math.min((t - t0) / dur, 1);
+          p = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * p) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      // ── Reveals al scroll ──
+      var els = document.querySelectorAll('.reveal, .reveal-clip');
+      function revealEl(el) {
+        el.classList.add('is-visible');
+        if (!reduceMotion) {
+          el.querySelectorAll('[data-count]').forEach(animateCount);
+        }
+      }
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              revealEl(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -80px 0px' });
+        els.forEach(function (el) { io.observe(el); });
+      }
+
+      // ── ESCENA CLAVADA: los 10 botánicos ──
+      var BOTANICOS = [
+        ['Enebro', 'La espina dorsal del gin.'],
+        ['Coriandro', 'Cítrico, especiado.'],
+        ['Limón', 'Frescura en nariz.'],
+        ['Naranja', 'Dulzor cítrico.'],
+        ['Canela', 'Calidez y especias.'],
+        ['Pimienta de Jamaica', 'El picor final, en garganta.'],
+        ['Romero', 'Herbáceo. El primer aroma al abrir.'],
+        ['Nuez moscada', 'Profundidad y complejidad.'],
+        ['Raíz de angélica', 'Base terrosa y floral.'],
+        ['Cardamomo', 'Exótico. Redondea el blend.']
+      ];
+
+      var pinSection = document.getElementById('botanicos-pin');
+      var botIdx = document.getElementById('bot-idx');
+      var botName = document.getElementById('bot-name');
+      var botNota = document.getElementById('bot-nota');
+      var botBar = document.getElementById('bot-bar');
+      var botCurrent = 0;
+      var botSwapping = false;
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+      function setBotanico(i) {
+        if (botSwapping || i === botCurrent) return;
+        botSwapping = true;
+        botCurrent = i;
+        [botIdx, botName, botNota].forEach(function (el) { el.classList.add('bot-hide'); });
+        setTimeout(function () {
+          botIdx.textContent = pad(i + 1) + ' — 10';
+          botName.textContent = BOTANICOS[i][0];
+          botNota.textContent = BOTANICOS[i][1];
+          [botIdx, botName, botNota].forEach(function (el) { el.classList.remove('bot-hide'); });
+          botSwapping = false;
+        }, 300);
+      }
+
+      // ── Motor de scroll: nav + parallax + hero scroll-out + escena, un solo rAF ──
+      var nav = document.getElementById('nav');
+      var heroContent = document.getElementById('hero-content');
+      var plxEls = [].slice.call(document.querySelectorAll('[data-parallax]'));
+      var ticking = false;
+
+      function update() {
+        ticking = false;
+        var y = window.scrollY;
+        var vh = window.innerHeight;
+
+        nav.classList.toggle('solid', y > 40);
+
+        // Escena de botánicos: el scroll elige qué botánico se muestra
+        if (pinSection) {
+          var pr = pinSection.getBoundingClientRect();
+          if (pr.top < vh && pr.bottom > 0) {
+            var total = pinSection.offsetHeight - vh;
+            var p = Math.min(1, Math.max(0, -pr.top / total));
+            botBar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+            var idx = Math.min(BOTANICOS.length - 1, Math.floor(p * BOTANICOS.length));
+            setBotanico(idx);
+          }
+        }
+
+        if (reduceMotion) return;
+
+        // Parallax: cada capa se mueve a su propia velocidad
+        plxEls.forEach(function (el) {
+          var parent = el.parentElement;
+          var r = parent.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > vh + 100) return;
+          var speed = parseFloat(el.getAttribute('data-parallax'));
+          var progress = r.top + r.height / 2 - vh / 2;
+          el.style.transform = 'translate3d(0,' + (-progress * speed).toFixed(1) + 'px,0)';
+        });
+
+        // Hero: el contenido sube y se desvanece al scrollear (estilo Beefeater)
+        if (heroContent && y < vh) {
+          heroContent.style.transform = 'translate3d(0,' + (y * 0.22).toFixed(1) + 'px,0)';
+          heroContent.style.opacity = Math.max(0, 1 - y / (vh * 0.72)).toFixed(3);
+        }
+      }
+
+      function onScroll() {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+
+      // ── Scroll con inercia (solo rueda de mouse en desktop; touch y teclado quedan nativos) ──
+      if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+        var targetY = window.scrollY;
+        var curY = targetY;
+        var smoothRaf = null;
+
+        function maxScroll() {
+          return document.documentElement.scrollHeight - window.innerHeight;
+        }
+
+        function smoothStep() {
+          curY += (targetY - curY) * 0.105;
+          if (Math.abs(targetY - curY) < 0.5) {
+            curY = targetY;
+            smoothRaf = null;
+          } else {
+            smoothRaf = requestAnimationFrame(smoothStep);
+          }
+          window.scrollTo(0, Math.round(curY));
+        }
+
+        window.addEventListener('wheel', function (e) {
+          if (e.ctrlKey) return;
+          if (document.body.classList.contains('no-scroll')) return;
+          e.preventDefault();
+          var delta = e.deltaY * (e.deltaMode === 1 ? 16 : 1);
+          targetY = Math.max(0, Math.min(maxScroll(), targetY + delta));
+          if (!smoothRaf) smoothRaf = requestAnimationFrame(smoothStep);
+        }, { passive: false });
+
+        // Si el usuario scrollea por otra vía (teclado, barra, anclas), nos re-sincronizamos
+        window.addEventListener('scroll', function () {
+          if (!smoothRaf) {
+            targetY = window.scrollY;
+            curY = targetY;
+          }
+        }, { passive: true });
+      }
+    })();
+  </script>
+
+</body>
+</html>
