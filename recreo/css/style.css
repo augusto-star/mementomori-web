@@ -158,7 +158,7 @@ h3.seccion:first-child { margin-top: 0; }
 .btn svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
 
 .acciones { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
-.acciones-fila { display: flex; flex-wrap: wrap; gap: 10px; }
+.acciones-fila { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; }
 .acciones-fila .btn { flex: 1 1 140px; }
 
 /* ---------- Cards genéricas ---------- */
@@ -337,21 +337,25 @@ fieldset:disabled .radio { opacity: 0.55; cursor: not-allowed; }
 
 /* ---------- Tabla de posiciones ---------- */
 .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--borde); border-radius: var(--radio); }
-.tabla { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 480px; }
-.tabla th, .tabla td { padding: 10px 8px; text-align: center; border-bottom: 1px solid var(--borde-suave); white-space: nowrap; }
-.tabla th { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oro); font-weight: 600; background: var(--negro-2); }
+.tabla { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.tabla th, .tabla td { padding: 10px 4px; text-align: center; border-bottom: 1px solid var(--borde-suave); white-space: nowrap; }
+.tabla th:first-child, .tabla td:first-child { padding-left: 10px; }
+.tabla th:last-child, .tabla td:last-child { padding-right: 10px; }
+.tabla th { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--oro); font-weight: 600; background: var(--negro-2); }
 .tabla td.equipo, .tabla th.equipo { text-align: left; }
-.tabla td.equipo { max-width: 200px; }
-.tabla td.equipo div { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.tabla td.equipo { max-width: 118px; }
+.tabla td.equipo div { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .tabla td.equipo span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tabla tbody tr:last-child td { border-bottom: 0; }
 .tabla td.pts { font-weight: 700; color: var(--oro-claro); }
 .tabla tr.lider td { background: rgba(201, 168, 76, 0.08); }
 .tabla td.pos { color: var(--crema-3); }
 .tabla .pos-1 { color: var(--oro); font-weight: 700; }
-.tabla thead th:first-child, .tabla tbody td:first-child { position: sticky; left: 0; background: var(--negro-2); }
-.tabla thead th:nth-child(2), .tabla tbody td:nth-child(2) { position: sticky; left: 36px; background: var(--negro-2); }
-.tabla tr.lider td:first-child, .tabla tr.lider td:nth-child(2) { background: #1f1a10; }
+@media (min-width: 560px) {
+  .tabla { font-size: 0.92rem; }
+  .tabla th, .tabla td { padding: 11px 9px; }
+  .tabla td.equipo { max-width: 240px; }
+}
 
 /* ---------- Llave (bracket) ---------- */
 .llave-scroll {
@@ -360,7 +364,7 @@ fieldset:disabled .radio { opacity: 0.55; cursor: not-allowed; }
   scroll-snap-type: x proximity;
 }
 .llave { display: flex; gap: 22px; align-items: stretch; width: max-content; min-height: 60vh; }
-.llave-col { display: flex; flex-direction: column; width: 220px; scroll-snap-align: start; }
+.llave-col { display: flex; flex-direction: column; width: 210px; scroll-snap-align: start; }
 .llave-col-titulo {
   font-family: var(--display); font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--oro); text-align: center; margin-bottom: 10px; font-weight: 600;
