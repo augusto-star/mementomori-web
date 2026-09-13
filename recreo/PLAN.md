@@ -135,7 +135,7 @@ Reglas de generación:
 # desde la raíz del repo
 python3 -m http.server 8080
 # abrir http://localhost:8080/recreo/
-node --test recreo/tests/
+node --test 'recreo/tests/*.test.mjs'
 ```
 
 ## Roadmap (después del MVP)
