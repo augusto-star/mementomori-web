@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Recreo · Beer Pong</title>
+  <meta name="description" content="Recreo: torneo de beer pong entre amigos. Anotá los equipos, generá el fixture y cargá los resultados desde el celu.">
+  <meta name="theme-color" content="#0A0806">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="Recreo · Beer Pong">
+  <meta property="og:description" content="Torneo de beer pong entre amigos. Sin cuentas, sin vueltas.">
+  <!-- Favicon: vaso rojo con pelotita -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A0806'/%3E%3Cpath d='M17 14h30l-4 38H21z' fill='%23D7263D'/%3E%3Cpath d='M17 14h30l-1 8H18z' fill='%23F25C6E'/%3E%3Ccircle cx='32' cy='12' r='7' fill='%23F5F0E8' stroke='%23C9A84C' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0806'/%3E%3Cpath d='M17 14h30l-4 38H21z' fill='%23D7263D'/%3E%3Ccircle cx='32' cy='12' r='7' fill='%23F5F0E8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <header class="topbar">
+    <a class="marca" href="#/" aria-label="Recreo, inicio">
+      <svg class="marca-icono" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M17 14h30l-4 38H21z" fill="#D7263D"/>
+        <path d="M17 14h30l-1 8H18z" fill="#F25C6E"/>
+        <circle cx="32" cy="12" r="7" fill="#F5F0E8" stroke="#C9A84C" stroke-width="2"/>
+      </svg>
+      <span class="marca-texto">Recreo</span>
+    </a>
+    <span class="marca-sub">Beer Pong</span>
+  </header>
+
+  <main id="main" class="app" aria-live="polite"></main>
+
+  <nav class="tabs" aria-label="Secciones">
+    <a href="#/" data-tab="inicio" class="tab">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+      <span>Inicio</span>
+    </a>
+    <a href="#/equipos" data-tab="equipos" class="tab">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 19c0-3.5 3-5.5 6.5-5.5S15.5 15.5 15.5 19zM15 19c0-2 .8-3.6 2-4.6 2.6.2 4.5 1.9 4.5 4.6z"/></svg>
+      <span>Equipos</span>
+    </a>
+    <a href="#/fixture" data-tab="fixture" class="tab">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v3H4zM4 10.5h16v3H4zM4 17h16v3H4z"/></svg>
+      <span>Fixture</span>
+    </a>
+    <a href="#/tabla" data-tab="tabla" class="tab">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V9h3v11zM10.5 20V4h3v16zM16 20v-7h3v7z"/></svg>
+      <span data-tab-label="tabla">Tabla</span>
+    </a>
+    <a href="#/ajustes" data-tab="mas" class="tab">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="19" cy="12" r="2.2"/></svg>
+      <span>Más</span>
+    </a>
+  </nav>
+
+  <!-- Hoja inferior (modal) para resultados y formularios -->
+  <div id="sheet-backdrop" class="sheet-backdrop" hidden></div>
+  <section id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-titulo" hidden></section>
+
+  <!-- Avisos -->
+  <div id="toasts" class="toasts" aria-live="assertive" aria-atomic="false"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
